@@ -2,6 +2,7 @@
 	import Head from "./head.svelte";
 	import Foot from "./footer.svelte";
 	import Tabs from "./reuse/tabs.svelte";
+	import Use from "./reuse/reusebtn.svelte"
 
 	let activePolls = 0;
     let tabContent = ["Current Polls Content", "Add New Poll Content"];
@@ -17,6 +18,7 @@
 		<p>{tabContent[0]}</p>
 	  {:else}
 		<p>{tabContent[1]}</p>
+		<Use />
 	  {/if}
 	</div>
 
