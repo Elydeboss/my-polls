@@ -17,7 +17,6 @@
 	  {#if activePolls === 0}
 		<p>{tabContent[0]}</p>
 	  {:else}
-		<p>{tabContent[1]}</p>
 		<Use />
 	  {/if}
 	</div>
