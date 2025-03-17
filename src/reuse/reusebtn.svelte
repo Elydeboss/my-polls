@@ -76,4 +76,8 @@
   label{
     text-align: left;
   }
+  .error{
+    color: red;
+    font-size: 14px;
+  }
 </style>
