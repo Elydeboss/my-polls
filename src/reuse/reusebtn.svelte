@@ -2,7 +2,6 @@
   import { ChartColumnDecreasing } from "lucide-react";
 
   let binder = {question: '', answerA: '', answerB: '' };
-
   let error = {question: '', answerA: '', answerB: '' };
   let validator = false;
 
@@ -48,7 +47,7 @@
     <div class="input-form">
         <label for="answer-A">Answer A</label>
         <input type="text" id="answer-A" bind:value={binder.answerA}>
-        <div class="error">{ error.answerB} </div>
+        <div class="error">{ error.answerA} </div>
     </div>
 
     <div class="input-form">
