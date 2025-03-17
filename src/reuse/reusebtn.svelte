@@ -1,4 +1,8 @@
 <script>
+  import { createEventDispatcher } from "svelte";
+
+  let dispatcher = createEventDispatcher();
+
   let binder = { question: "", answerA: "", answerB: "" };
   let error = { question: "", answerA: "", answerB: "" };
   let valid = false;
@@ -31,7 +35,9 @@
     }
 
     if (valid) {
-      console.log("Valid Form Data:", binder);
+      let pollVote = {...fields, votesA, votesB, id: Math.random()}
+
+      dispatcher('add', pollVote);
       // Reset form (optional)
       binder = { question: "", answerA: "", answerB: "" };
     }
