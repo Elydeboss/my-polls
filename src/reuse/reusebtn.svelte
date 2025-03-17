@@ -1,82 +1,85 @@
 <script>
-  import { ChartColumnDecreasing } from "lucide-react";
+  let binder = { question: "", answerA: "", answerB: "" };
+  let error = { question: "", answerA: "", answerB: "" };
+  let valid = false;
 
-  let binder = {question: '', answerA: '', answerB: '' };
-  let error = {question: '', answerA: '', answerB: '' };
-  let validator = false;
+  const formSubmit = () => {
+    valid = true; // Reset valid state before validation
 
-  const formSumbit = () => {
-    validator = true;
-    //validate question
-    if (binder.question.trim().length < 6) {
-       validator = false;
-       error.question = 'inclued atleast 6 ChartColumnDecreasing';
+    // Validate question (at least 5 words)
+    if (binder.question.trim().split(/\s+/).length < 5) {
+      valid = false;
+      error.question = "Should have at least five words";
     } else {
-      error.question = '';
-      
+      error.question = "";
     }
 
-        //validate answerA
-        if (binder.answerA.trim().length < 1) {
-       validator = false;
-       error.answerA = 'can not be empty';
+    // Validate answer A (not empty)
+    if (binder.answerA.trim().length < 1) {
+      valid = false;
+      error.answerA = "Cannot be empty";
     } else {
-      error.answerA = '';
-      
+      error.answerA = "";
     }
 
-        //validate answerB
-        if (binder.answerB.trim().length < 1) {
-       validator = false;
-       error.answerB = 'can not be empty';
+    // Validate answer B (not empty)
+    if (binder.answerB.trim().length < 1) {
+      valid = false;
+      error.answerB = "Cannot be empty";
     } else {
-      error.answerB = '';
-      
+      error.answerB = "";
     }
-  }
-  
+
+    if (valid) {
+      console.log("Valid Form Data:", binder);
+      // Reset form (optional)
+      binder = { question: "", answerA: "", answerB: "" };
+    }
+  };
 </script>
 
-<form on:submit|preventDefault={formSumbit}>
-    <div class="input-form">
-        <label for="head-questions">Question</label>
-        <input type="text" id="questions" bind:value={binder.question}>
-        <div class="error">{ error.question }</div>
-    </div>
+<form on:submit|preventDefault={formSubmit}>
+  <div class="input-form">
+    <label for="head-questions">Question</label>
+    <input type="text" id="questions" bind:value={binder.question} />
+    <div class="error">{error.question}</div>
+  </div>
 
-    <div class="input-form">
-        <label for="answer-A">Answer A</label>
-        <input type="text" id="answer-A" bind:value={binder.answerA}>
-        <div class="error">{ error.answerA} </div>
-    </div>
+  <div class="input-form">
+    <label for="answer-A">Answer A</label>
+    <input type="text" id="answer-A" bind:value={binder.answerA} />
+    <div class="error">{error.answerA}</div>
+  </div>
 
-    <div class="input-form">
-        <label for="answer-B">Answer B</label>
-        <input type="text" id="answer-B" bind:value={binder.answerB}>
-        <div class="error">{ error.answerB}</div>
-    </div>
+  <div class="input-form">
+    <label for="answer-B">Answer B</label>
+    <input type="text" id="answer-B" bind:value={binder.answerB} />
+    <div class="error">{error.answerB}</div>
+  </div>
 
-    <button>Add form</button>
-
+  <button type="submit">Add Form</button>
 </form>
 
 <style>
-  form{
+  form {
     width: 450px;
     margin: 0 auto;
     text-align: center;
   }
-  .input-form{
+  .input-form {
     margin: 15px auto;
   }
-  input{
+  input {
     width: 100%;
     border-radius: 6px;
+    padding: 5px;
   }
-  label{
+  label {
     text-align: left;
+    display: block;
+    margin-bottom: 5px;
   }
-  .error{
+  .error {
     color: red;
     font-size: 14px;
   }
