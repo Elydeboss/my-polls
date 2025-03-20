@@ -3,6 +3,7 @@
 	import Foot from "./footer.svelte";
 	import Tabs from "./reuse/tabs.svelte";
 	import Use from "./reuse/reusebtn.svelte"
+	import Poll from "./reuse/PollList.svelte"
   import { handler } from "tailwindcss-animate";
 
 	let activePolls = 0;
@@ -10,8 +11,8 @@
 
    let voteHandle = (e) => {
      const pollVote = e.detail;
-	 polls = [pollVote, ...polls]
-	 console.log(polls)
+	 Polls = [pollVote, ...polls]
+	 tabContent = "Current Polls Content";
    }
 
    let Polls = [{id: 1, question: 'what programming language do you like', answerA: 'python', answerB:'javascript', votesA:10, voteB: 18, }];
@@ -23,7 +24,7 @@
 
 	<div class="tab-content">
 	  {#if activePolls === 0}
-		<p>{tabContent[0]}</p>
+		<Poll {Polls}/>
 	  {:else}
 		<Use on:pollVote={voteHandle}/>
 	  {/if}
