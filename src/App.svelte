@@ -12,7 +12,7 @@
    let voteHandle = (e) => {
      const pollVote = e.detail;
 	 Polls = [pollVote, ...polls]
-	 tabContent = "Current Polls Content";
+	 activePolls = 0;
    }
 
    let Polls = [{id: 1, question: 'what programming language do you like', answerA: 'python', answerB:'javascript', votesA:10, voteB: 18, }];

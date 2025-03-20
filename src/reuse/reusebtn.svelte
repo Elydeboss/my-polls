@@ -11,7 +11,7 @@
     valid = true; // Reset valid state before validation
 
     // Validate question (at least 5 words)
-    if (binder.question.trim().split(/\s+/).length < 5) {
+    if (binder.question.trim().split(/\s+/).length < 4) {
       valid = false;
       error.question = "Should have at least five words";
     } else {
